@@ -53,9 +53,9 @@ def _parse_args(_args_:list):
             \nDefault is 'us-east-1'."
     )
     parser.add_argument(
-        "-o", "--output", default="print",
+        "-o", "--output", default="none",
         help="selects output type.\
-            \nOptions are print (default), csv, and json. Filename is olumpus_output."
+            \nOptions are none (default), print, csv, and json. Filename is olumpus_output."
     )
     return parser.parse_args()
 
@@ -73,7 +73,9 @@ def main(args):
                 ec2_instances.append(Ec2Instance(_raw_response_data[i[0]]["Instances"][0]))
         # Checks command arg for output type. See --output in _parse_args().
         output = args.output.lower()
-        if output == "print":
+        if output == "none":
+            pass
+        elif output == "print":
             print_output(args.region, ec2_instances)
         elif output == "csv":
             write_output_csv(args.region, ec2_instances)

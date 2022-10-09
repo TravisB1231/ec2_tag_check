@@ -4,11 +4,6 @@ from os import environ
 
 from boto3 import Session
 
-botosesh = Session(
-    region_name="us-east-1",
-    profile_name=environ.get('AWS_PROFILE')
-)
-
 def validate_response_code(resp:dict) -> bool:
     """Sifts through boto3 return data. Returns True if response is 2xx or 3xx."""
     status = resp["ResponseMetadata"]["HTTPStatusCode"]
@@ -16,4 +11,8 @@ def validate_response_code(resp:dict) -> bool:
         return True
     print("Invalid response.")
     return False
-    
+
+botosesh = Session(
+    region_name="us-east-1",
+    profile_name=environ.get('AWS_PROFILE')
+)
