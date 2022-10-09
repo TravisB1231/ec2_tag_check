@@ -33,9 +33,5 @@ class Ec2Instance:
 TODO: make new string from Owner_Email tag value and strip everything
     from and after '@' afterward:
     owner_name = [Owner_Email][0] + [Owner_Email][1:]
-TODO: Function for checking for naming convention with regex.
-        Pass which pattern as argument
-TODO: find out if there's any usage pattern match.
-        if not, add to a list to message creator.
 """
     

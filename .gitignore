@@ -1,5 +1,5 @@
 # ignore output files
-output*
+*output*
 # ignore __pycache__
 __pycache__
 ec2_tag_check/.gitignore
