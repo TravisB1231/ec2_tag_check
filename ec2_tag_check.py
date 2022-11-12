@@ -12,23 +12,24 @@ from olympus_patterns import patterns
 
 def print_output(rgn, inst_list:list) -> None:
     """Writes to olympus_output.csv in csv format. Columns align with parameter names."""
-    print("Index\tRegion\t\tID\t\t\tName\t\t\t\tEmail")
+    print("Index\tRegion\t\tID\t\t\tName\t\t\t\tEmail\t\t\t\tDo Not Stop")
     i = 1
     for inst in inst_list:
-        print(f'{i}\t{rgn}\t{inst.id}\t{inst.instance_name}\t{inst.instance_email}')
+        print(f'{i}\t{rgn}\t{inst.id}\t{inst.instance_name}\t{inst.instance_email}\t{inst.do_not_stop}')
         i += 1
 
 def write_output_csv(rgn, inst_list:list) -> None:
     """Writes to olympus_output.csv in csv format. Columns align with parameter names."""
     with open("olympus_output.csv", 'w', encoding="UTF-8") as outfile:
         # CSV column names
-        outfile.write("Region,ID,Name,Email\n")
+        outfile.write("Region,ID,Name,Email,Do Not Stop\n")
         # CSV rows
         for inst in inst_list:
-            outfile.write(f"{rgn},{inst.id},{inst.instance_name},{inst.instance_email},\n")
+            outfile.write(f"{rgn},{inst.id},{inst.instance_name},{inst.instance_email},{inst.do_not_stop}\n")
 
 def write_output_json(resp:dict) -> None:
-    """Writes to olympus_output.json in json format."""
+    """Useful for testing to get raw boto3 output.
+    Writes to olympus_output.json in json format."""
     with open("olympus_output.json", 'w', encoding="UTF-8") as outfile:
         outfile.write(json.dumps(resp, default=str))
 
